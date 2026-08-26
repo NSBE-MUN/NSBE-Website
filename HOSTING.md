@@ -53,6 +53,20 @@ side effect of merging.
 > Bootstrap. What's in the repo is exactly what gets served — no compiler, no
 > framework, no `npm install`. Open `index.html` in a browser to preview locally.
 
+### Will this ever start costing money?
+
+No. GitHub Actions is **free with unlimited minutes for public repositories**, and
+this repo is public — so deploys never run out and never generate a bill. (The
+2,000-minutes-per-month cap people mention applies only to *private* repos.)
+
+GitHub Pages itself has a 1 GB site-size limit and a *soft* 100 GB/month bandwidth
+limit. This site is around 20 MB and a student chapter will not come close to the
+bandwidth figure — and because it's soft, GitHub emails rather than cutting you off
+or charging. The 10-builds-per-hour limit does not apply here, as GitHub exempts
+custom Actions workflows like ours.
+
+**The domain renewal remains the only thing anyone ever has to pay for.**
+
 ---
 
 ## The DNS records
@@ -196,13 +210,11 @@ Recorded honestly so nobody rediscovers them the hard way.
 - **Old links still point at the dead domain.** The Instagram bio, LinkedIn page,
   Facebook page, and the MUNSU chapter listing all still reference `nsbemun.ca`.
   Each needs updating by hand.
-- **Plain `http://` was still settling.** At time of writing, `http://nsbe-mun.ca`
-  returned a 404 while HTTPS worked correctly — GitHub's edge network catching up
-  after the domain was added. Modern browsers try HTTPS first, so visitors were
-  unaffected. If it persists, removing and re-adding the custom domain in
-  **Settings → Pages** is the documented fix.
-- **Some images are heavy.** A few homepage photos exceed 1 MB, slow on phone
-  data. Compressing them is an easy improvement with no risk to the hosting setup.
+- **Some images are heavy.** Several homepage photos exceed 1 MB — the IT
+  Director's `Emeka.png` is 1.9 MB, and a few carousel slides are larger still.
+  Photographs saved as PNG are the main offender; re-encoding them as JPEG
+  typically cuts them by ~85% with no visible difference at the size they render.
+  Easy improvement with no risk to the hosting setup.
 - **Team card links are placeholders.** Several LinkedIn buttons on the team cards
   still point at `#`.
 - **This README isn't formatted.** `README.md` is plain text with no Markdown
