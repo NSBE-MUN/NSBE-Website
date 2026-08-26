@@ -213,9 +213,16 @@ Recorded honestly so nobody rediscovers them the hard way.
   destination, so messages are silently discarded — nobody receives them. Either
   wire it to a free service such as Formspree, or replace it with a link to a
   Google Form like the membership one. Until then it quietly loses enquiries.
-- **Old links still point at the dead domain.** The Instagram bio, LinkedIn page,
-  Facebook page, and the MUNSU chapter listing all still reference `nsbemun.ca`.
-  Each needs updating by hand.
+- **The new address isn't published anywhere off-site.** Nothing in this repo
+  references the dead `nsbemun.ca` — the site uses relative links throughout, and
+  the only `nsbemun` string left is the Gmail address on the contact page, which
+  is unaffected by the lost domain. The gap is external:
+  - **MUNSU** (`munsu.ca/nsbe`) lists **no website at all**, so `nsbe-mun.ca`
+    needs adding rather than correcting. It also links a Facebook *group*
+    (`groups/973686196937262`) while this site's footer links a Facebook *page*
+    (`NSBE-MUN-102221058869179`) — worth deciding which is canonical.
+  - **Instagram, LinkedIn, and Facebook** bios need checking by hand. These can't
+    be verified programmatically, so someone has to open each one.
 - **Some images are heavy.** Several homepage photos exceed 1 MB — the IT
   Director's `Emeka.png` is 1.9 MB, and a few carousel slides are larger still.
   Photographs saved as PNG are the main offender; re-encoding them as JPEG
