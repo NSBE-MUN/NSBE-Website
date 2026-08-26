@@ -210,6 +210,22 @@ Recorded honestly so nobody rediscovers them the hard way.
 
 ---
 
+## Keeping this document accurate
+
+A wrong handbook is worse than no handbook — it sends people chasing problems that
+no longer exist. Update this file **in the same pull request** as any change to
+hosting, DNS, the domain, Pages settings, the deploy workflow, or who has access.
+Delete known issues once they are genuinely fixed.
+
+Routine content changes — copy, photos, team roster — don't belong here. This
+document covers how the site is *operated*, not what it says.
+
+There is a skill at `.claude/skills/update-handbook/` that prompts Claude Code to
+do this automatically when it makes a relevant change. It's guidance rather than
+enforcement, so it's still worth checking by eye.
+
+---
+
 *If you're reading this because something broke, start at
 [When something breaks](#when-something-breaks) — and check the domain renewal
 date before anything else.*
