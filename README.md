@@ -1,5 +1,11 @@
 NSBE mUN Student University Society
 
+**Website: https://nsbe-mun.ca** — this repository is the live site.
+Maintaining it, deploying changes, and handing it over are documented in
+[HOSTING.md](HOSTING.md). Read that before changing anything in this repo.
+
+---
+
 Welcome to the NSBE mUN Student University Society! This document serves as a comprehensive guide to our society, outlining our mission, goals, structure, and activities. We aim to foster a supportive community for Black engineering students at our university, promoting academic excellence, professional development, and community engagement.
 
 Mission Statement
