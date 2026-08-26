@@ -28,8 +28,12 @@ Domain renewal is the single point of failure in this entire setup. The hosting
 is free and self-maintaining, but if the registration lapses the site becomes
 unreachable and someone else can buy the name.
 
-**Put the renewal date in a shared calendar that survives you leaving, not a
-personal one.**
+**A renewal reminder is set in a shared calendar** (August 2026). Confirm each
+year that it still exists and that whoever owns it hasn't graduated — a reminder
+sitting in a departed exec's personal calendar is the same as no reminder.
+
+The date itself isn't recorded here, since this repo is public. Look it up in
+GoDaddy, or run `whois nsbe-mun.ca` and read the expiry field.
 
 ---
 
@@ -192,9 +196,11 @@ main reason GitHub Pages was chosen over Netlify, Vercel, and Cloudflare Pages.
 - **GoDaddy account credentials.** This is the weak link — a registrar login is a
   shared secret, not a permission you can grant. Store it wherever the chapter
   keeps shared credentials and confirm at least two current execs can get in.
-- **The renewal date.** In a shared calendar with a reminder at least a month
-  ahead. Consider enabling auto-renew on a card that won't expire with a
-  graduating student.
+- **The renewal reminder.** Already set in a shared calendar. Verify it survived
+  the handover and still points at someone currently in the chapter. Also check
+  auto-renew is on, and on a card that won't expire with a graduating student —
+  auto-renew is the real protection, the calendar is the backup for when the card
+  fails.
 - **This document.** Keep it updated as things change.
 
 ---
