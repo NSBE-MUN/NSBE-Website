@@ -1,73 +1,52 @@
-(function ($) {
+(function () {
     "use strict";
 
-    // Initiate the wowjs
-    new WOW().init();
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Sticky Navbar
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 40) {
-            $('.navbar').addClass('sticky-top');
-        } else {
-            $('.navbar').removeClass('sticky-top');
-        }
-    });
-    
-    // Dropdown on mouse hover
-    $(document).ready(function () {
-        function toggleNavbarMethod() {
-            if ($(window).width() > 992) {
-                $('.navbar .dropdown').on('mouseover', function () {
-                    $('.dropdown-toggle', this).trigger('click');
-                }).on('mouseout', function () {
-                    $('.dropdown-toggle', this).trigger('click').blur();
-                });
-            } else {
-                $('.navbar .dropdown').off('mouseover').off('mouseout');
+    // Navbar shadow and back-to-top button once the page is scrolled
+    var nav = document.querySelector('.site-nav');
+    var backToTop = document.querySelector('.back-to-top');
+    function onScroll() {
+        var y = window.scrollY;
+        if (nav) nav.classList.toggle('is-scrolled', y > 40);
+        if (backToTop) backToTop.classList.toggle('is-visible', y > 480);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Home hero slideshow. Autoplays unless the visitor prefers reduced motion,
+    // and the pause button lets anyone stop it (WCAG 2.2.2).
+    var hero = document.getElementById('hero-carousel');
+    var toggle = document.querySelector('[data-carousel-toggle]');
+    if (hero && window.bootstrap) {
+        var carousel;
+        var playing = !reduceMotion;
+
+        function start(autoplay) {
+            if (carousel) carousel.dispose();
+            carousel = new bootstrap.Carousel(hero, {
+                interval: autoplay ? 6000 : false,
+                pause: autoplay ? 'hover' : false,
+                touch: true
+            });
+            if (autoplay) carousel.cycle();
+            if (toggle) {
+                toggle.setAttribute('aria-label', autoplay ? 'Pause slideshow' : 'Play slideshow');
+                toggle.innerHTML = autoplay ? '<i class="bi bi-pause-fill"></i>' : '<i class="bi bi-play-fill"></i>';
             }
         }
-        toggleNavbarMethod();
-        $(window).resize(toggleNavbarMethod);
-    });
-    
-    
-    // Back to top button
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 100) {
-            $('.back-to-top').fadeIn('slow');
-        } else {
-            $('.back-to-top').fadeOut('slow');
+
+        start(playing);
+        if (toggle) {
+            toggle.addEventListener('click', function () {
+                playing = !playing;
+                start(playing);
+            });
         }
-    });
-    $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
-        return false;
-    });
+    }
 
-
-    // Testimonials carousel
-    $(".testimonial-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 3000,
-        margin: 45,
-        dots: true,
-        loop: true,
-        center: true,
-        responsive: {
-            0:{
-                items:1
-            },
-            576:{
-                items:1
-            },
-            768:{
-                items:2
-            },
-            992:{
-                items:3
-            }
-        }
+    // Keep the footer copyright year current
+    document.querySelectorAll('[data-year]').forEach(function (el) {
+        el.textContent = new Date().getFullYear();
     });
-    
-})(jQuery);
-
+})();
