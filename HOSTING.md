@@ -64,7 +64,7 @@ this repo is public — so deploys never run out and never generate a bill. (The
 2,000-minutes-per-month cap people mention applies only to *private* repos.)
 
 GitHub Pages itself has a 1 GB site-size limit and a *soft* 100 GB/month bandwidth
-limit. This site is around 20 MB and a student chapter will not come close to the
+limit. This site is around 12 MB and a student chapter will not come close to the
 bandwidth figure — and because it's soft, GitHub emails rather than cutting you off
 or charging. The 10-builds-per-hour limit does not apply here, as GitHub exempts
 custom Actions workflows like ours.
@@ -209,20 +209,20 @@ main reason GitHub Pages was chosen over Netlify, Vercel, and Cloudflare Pages.
 
 Recorded honestly so nobody rediscovers them the hard way.
 
-- **The contact form does nothing.** The form on `contact.html` has no submit
-  destination, so messages are silently discarded — nobody receives them. Either
-  wire it to a free service such as Formspree, or replace it with a link to a
-  Google Form like the membership one. Until then it quietly loses enquiries.
 - **Old links still point at the dead domain.** The Instagram bio, LinkedIn page,
   Facebook page, and the MUNSU chapter listing all still reference `nsbemun.ca`.
   Each needs updating by hand.
-- **Some images are heavy.** Several homepage photos exceed 1 MB — the IT
-  Director's `Emeka.png` is 1.9 MB, and a few carousel slides are larger still.
-  Photographs saved as PNG are the main offender; re-encoding them as JPEG
-  typically cuts them by ~85% with no visible difference at the size they render.
-  Easy improvement with no risk to the hosting setup.
-- **Team card links are placeholders.** Several LinkedIn buttons on the team cards
-  still point at `#`.
+- **Unused photos are still published.** Five originals in `img/` are no longer
+  used by any page but are still deployed and publicly reachable by URL:
+  `Chidimma.jpeg`, `Emeka.JPG`, `Emeka_long.JPG`, `Hadiza.jpg` (2.4 MB), and
+  `Slide3.jpg`, each over 1 MB, plus a few smaller leftovers. They don't slow any
+  page down, but they are photos of people who may no longer want them online.
+  Delete them once nobody needs them. Photos the pages do use are already
+  resized: headshots live in `img/team/` at about 800 px wide.
+- **`team.html` is a leftover template page.** It isn't linked from anywhere, but
+  it is still served at `nsbe-mun.ca/team.html` with another site's name
+  ("SafeCam") in its navbar and none of the current styling. Delete it, or turn it
+  into a redirect to `about.html`.
 - **This README isn't formatted.** `README.md` is plain text with no Markdown
   headings, so GitHub renders it as one unbroken wall. Worth a cleanup pass.
 
