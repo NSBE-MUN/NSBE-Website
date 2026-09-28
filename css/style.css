@@ -945,7 +945,49 @@ img {
 }
 
 .team-card figcaption {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: .75rem;
     padding: 1rem 1.1rem 1.2rem;
+}
+
+.team-link {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    margin-top: -.1rem;
+    font-size: 1rem;
+    color: var(--maroon);
+    background: var(--gold-soft);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color .25s, color .25s, transform .25s var(--ease);
+}
+
+.team-link:hover,
+.team-link:focus-visible {
+    color: #fff;
+    background: var(--maroon);
+    transform: translateY(-2px);
+}
+
+.team-card figcaption > div {
+    min-width: 0;
+}
+
+/* Two-up cards on phones are too narrow for text and button side by side */
+@media (max-width: 575.98px) {
+    .team-card figcaption {
+        flex-direction: column;
+        gap: .6rem;
+    }
+
+    .team-link {
+        margin-top: 0;
+    }
 }
 
 .team-card h3 {
