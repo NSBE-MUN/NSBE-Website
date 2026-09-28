@@ -854,7 +854,7 @@ img {
 }
 
 .about-photo {
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 5 / 4;
     overflow: hidden;
     border-radius: calc(var(--radius) * 1.3);
     box-shadow: var(--shadow-lg);
@@ -942,16 +942,6 @@ img {
 
 .team-card:hover .team-photo img {
     transform: scale(1.04);
-}
-
-.team-avatar {
-    display: grid;
-    place-items: center;
-    width: 100%;
-    height: 100%;
-    font-size: clamp(3rem, 8vw, 4.5rem);
-    color: rgb(255 255 255 / .85);
-    background: linear-gradient(145deg, var(--green) 0%, var(--green-deep) 55%, var(--maroon) 100%);
 }
 
 .team-card figcaption {
