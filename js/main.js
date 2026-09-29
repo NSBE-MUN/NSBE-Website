@@ -14,13 +14,12 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    // Slideshows (home hero, Events page). Each autoplays unless the visitor
-    // prefers reduced motion, and its pause button lets anyone stop it (WCAG 2.2.2).
-    var intervals = { 'hero-carousel': 6000, 'event-carousel': 5000 };
+    // Slideshows: any .carousel with data-autoplay="<ms between slides>".
+    // Each autoplays unless the visitor prefers reduced motion, and its pause
+    // button lets anyone stop it (WCAG 2.2.2).
     if (window.bootstrap) {
-        Object.keys(intervals).forEach(function (id) {
-            var el = document.getElementById(id);
-            if (!el) return;
+        document.querySelectorAll('.carousel[data-autoplay]').forEach(function (el) {
+            var interval = parseInt(el.getAttribute('data-autoplay'), 10);
             var toggle = el.querySelector('[data-carousel-toggle]');
             var carousel;
             var playing = !reduceMotion;
@@ -28,7 +27,7 @@
             function start(autoplay) {
                 if (carousel) carousel.dispose();
                 carousel = new bootstrap.Carousel(el, {
-                    interval: autoplay ? intervals[id] : false,
+                    interval: autoplay ? interval : false,
                     pause: autoplay ? 'hover' : false,
                     touch: true
                 });
