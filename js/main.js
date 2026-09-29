@@ -14,35 +14,49 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    // Home hero slideshow. Autoplays unless the visitor prefers reduced motion,
-    // and the pause button lets anyone stop it (WCAG 2.2.2).
-    var hero = document.getElementById('hero-carousel');
-    var toggle = document.querySelector('[data-carousel-toggle]');
-    if (hero && window.bootstrap) {
-        var carousel;
-        var playing = !reduceMotion;
+    // Slideshows: any .carousel with data-autoplay="<ms between slides>".
+    // Each autoplays unless the visitor prefers reduced motion, and its pause
+    // button lets anyone stop it (WCAG 2.2.2).
+    if (window.bootstrap) {
+        document.querySelectorAll('.carousel[data-autoplay]').forEach(function (el) {
+            var interval = parseInt(el.getAttribute('data-autoplay'), 10);
+            var toggle = el.querySelector('[data-carousel-toggle]');
+            var carousel;
+            var playing = !reduceMotion;
 
-        function start(autoplay) {
-            if (carousel) carousel.dispose();
-            carousel = new bootstrap.Carousel(hero, {
-                interval: autoplay ? 6000 : false,
-                pause: autoplay ? 'hover' : false,
-                touch: true
-            });
-            if (autoplay) carousel.cycle();
-            if (toggle) {
-                toggle.setAttribute('aria-label', autoplay ? 'Pause slideshow' : 'Play slideshow');
-                toggle.innerHTML = autoplay ? '<i class="bi bi-pause-fill"></i>' : '<i class="bi bi-play-fill"></i>';
+            function start(autoplay) {
+                if (carousel) carousel.dispose();
+                carousel = new bootstrap.Carousel(el, {
+                    interval: autoplay ? interval : false,
+                    pause: autoplay ? 'hover' : false,
+                    touch: true
+                });
+                if (autoplay) carousel.cycle();
+                if (toggle) {
+                    toggle.setAttribute('aria-label', autoplay ? 'Pause slideshow' : 'Play slideshow');
+                    toggle.innerHTML = autoplay ? '<i class="bi bi-pause-fill"></i>' : '<i class="bi bi-play-fill"></i>';
+                }
             }
-        }
 
-        start(playing);
-        if (toggle) {
-            toggle.addEventListener('click', function () {
-                playing = !playing;
-                start(playing);
-            });
-        }
+            // Hidden slides never trigger lazy loading on their own, so fetch
+            // them once the first photo is in, before they fade in blank.
+            var first = el.querySelector('.carousel-item.active img');
+            function warm() {
+                el.querySelectorAll('img[loading="lazy"]').forEach(function (img) {
+                    img.loading = 'eager';
+                });
+            }
+            if (!first || first.complete) warm();
+            else first.addEventListener('load', warm, { once: true });
+
+            start(playing);
+            if (toggle) {
+                toggle.addEventListener('click', function () {
+                    playing = !playing;
+                    start(playing);
+                });
+            }
+        });
     }
 
     // Keep the footer copyright year current
