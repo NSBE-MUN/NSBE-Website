@@ -421,7 +421,8 @@ img {
     gap: .75rem;
 }
 
-.hero-controls {
+/* Slideshow controls, shared by the home hero and the Events page */
+.slide-controls {
     position: absolute;
     z-index: 3;
     right: clamp(1rem, 4vw, 3rem);
@@ -431,13 +432,13 @@ img {
     gap: .75rem;
 }
 
-.hero-controls .carousel-indicators {
+.slide-controls .carousel-indicators {
     position: static;
     gap: .4rem;
     margin: 0;
 }
 
-.hero-controls .carousel-indicators [data-bs-target] {
+.slide-controls .carousel-indicators [data-bs-target] {
     width: 28px;
     height: 4px;
     margin: 0;
@@ -452,13 +453,13 @@ img {
     transition: width .35s var(--ease), opacity .35s, background-color .35s;
 }
 
-.hero-controls .carousel-indicators .active {
+.slide-controls .carousel-indicators .active {
     width: 52px;
     opacity: 1;
     background-color: var(--gold);
 }
 
-.hero-toggle {
+.slide-toggle {
     display: grid;
     place-items: center;
     width: 42px;
@@ -472,7 +473,7 @@ img {
     transition: background-color .25s, color .25s;
 }
 
-.hero-toggle:hover {
+.slide-toggle:hover {
     color: var(--ink);
     background: #fff;
 }
@@ -781,8 +782,49 @@ img {
     object-fit: cover;
 }
 
+.event-carousel,
+.event-carousel .carousel-inner,
+.event-carousel .carousel-item {
+    height: 100%;
+}
+
+.event-carousel .carousel-item {
+    transition-duration: .9s;
+}
+
+/* Darken the bottom edge so the slideshow controls stay readable on any photo */
+.event-carousel::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    z-index: 2;
+    height: 35%;
+    pointer-events: none;
+    background: linear-gradient(0deg, rgb(23 18 15 / .55), transparent);
+}
+
+.event-carousel .slide-controls {
+    right: 1rem;
+    bottom: 1rem;
+    gap: .6rem;
+}
+
+.event-carousel .carousel-indicators [data-bs-target] {
+    width: 18px;
+}
+
+.event-carousel .carousel-indicators .active {
+    width: 34px;
+}
+
+.event-carousel .slide-toggle {
+    width: 36px;
+    height: 36px;
+}
+
 .event-badge {
     position: absolute;
+    z-index: 3;
     top: 1rem;
     left: 1rem;
     padding: .4rem .85rem;

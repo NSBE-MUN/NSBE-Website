@@ -212,13 +212,6 @@ Recorded honestly so nobody rediscovers them the hard way.
 - **Old links still point at the dead domain.** The Instagram bio, LinkedIn page,
   Facebook page, and the MUNSU chapter listing all still reference `nsbemun.ca`.
   Each needs updating by hand.
-- **Unused photos are still published.** Five originals in `img/` are no longer
-  used by any page but are still deployed and publicly reachable by URL:
-  `Chidimma.jpeg`, `Emeka.JPG`, `Emeka_long.JPG`, `Hadiza.jpg` (2.4 MB), and
-  `Slide3.jpg`, each over 1 MB, plus a few smaller leftovers. They don't slow any
-  page down, but they are photos of people who may no longer want them online.
-  Delete them once nobody needs them. Photos the pages do use are already
-  resized: headshots live in `img/team/` at about 800 px wide.
 - **`team.html` is a leftover template page.** It isn't linked from anywhere, but
   it is still served at `nsbe-mun.ca/team.html` with another site's name
   ("SafeCam") in its navbar and none of the current styling. Delete it, or turn it
